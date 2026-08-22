@@ -16,6 +16,16 @@
   display: flex;
   flex-direction: column;
 }
+      #app {
+  display: flex;
+  flex-direction: column;
+  height: var(--tg-viewport-stable-height, 100vh); /* Full screen height */
+  width: 100%;
+  box-sizing: border-box;
+  
+  /* Push your content 40px down to clear the native close button zone */
+  padding-top: 40px; 
+}
       
     </style>
   </head>
