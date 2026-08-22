@@ -10,12 +10,7 @@
       window.Telegram.WebApp.expand();
     </script>
     <style>
-.app-container {
-  width: 100%;
-  height: var(--tg-viewport-stable-height); /* Safe fullscreen height */
-  display: flex;
-  flex-direction: column;
-}
+
   #root {
   display: flex;
   flex-direction: column;
@@ -31,8 +26,7 @@
   </head>
   <body style="height:1000px;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
-
-   
+  
     <div id="root"></div>
 
     <div>Status: fixed 5</div>
@@ -58,7 +52,7 @@
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
       window.Telegram.WebApp.showAlert(Telegram.WebApp.isExpanded);
-      window.Telegram.WebApp.setHeaderColor('#1a1a1a');
+      window.Telegram.WebApp.setHeaderColor('#FF8303');
       window.Telegram.WebApp.BackButton.show();
       window.Telegram.WebApp.BackButton.onClick(() => {  // Your back navigation logic here
         window.Telegram.WebApp.BackButton.hide();
