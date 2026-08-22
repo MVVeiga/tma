@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
 }
-      #app {
+  #app {
   display: flex;
   flex-direction: column;
   height: var(--tg-viewport-stable-height, 100vh); /* Full screen height */
@@ -24,7 +24,7 @@
   box-sizing: border-box;
   
   /* Push your content 40px down to clear the native close button zone */
-  padding-top: 80px; 
+  padding-top: env(safe-area-inset-top, 0px);
 }
       
     </style>
@@ -46,7 +46,7 @@
 
 
     
-    <div id="root"></div>
+    <div id="app"></div>
 
     <div>Status: fixed 5</div>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
