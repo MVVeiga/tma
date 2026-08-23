@@ -7,7 +7,6 @@
     <title>Telegram Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-      Telegram.WebApp.showAlert('V2.3 - Header Script isExpanded? ' + Telegram.WebApp.isExpanded);
       Telegram.WebApp.expand();
     </script>
     <style>
@@ -34,14 +33,15 @@
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
-    <iframe width="100vw" height="56vw" src="https://www.youtube.com/embed/ELjzrNXhAlk?&autoplay=1"frameborder="0" allowfullscreen></iframe>
+    <iframe style="width:100vw;height:56.25vw" src="https://www.youtube.com/embed/ELjzrNXhAlk?&autoplay=1"frameborder="0" allowfullscreen></iframe>
     <div  type="text" style="width:100%;padding:0;margin:0;background:white">Console<br><span id="con"></span></div>
     <div  type="text" style="width:100%;padding:0;margin:0;background:white">Geolocation<br><span id="geo"></span></div>
     <div type="text" style="width:100%;padding:0;margin:0;background:white">Message<br><span id="msg"></span></div>
     <script>
-      let tg = window.Telegram.WebApp;
+      let tg = Telegram.WebApp;
       console.log('SVXTMA connectedCallBack', tg);
       let con = document.getElementById("console");
+      con.innerText =   "V2.4 - isExpanded? " + tg.isExpanded;
       let geo = document.getElementById("geo");
       let msg = document.getElementById("msg");
       msg.innerText = JSON.stringify(tg.initData);
@@ -50,7 +50,6 @@
           geo.innerText = `Local: Lat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}`;
           tg.ready();
           tg.expand();
-          tg.showAlert(Telegram.WebApp.isExpanded);
           }, err => { console.log("Error:", err) });
       } else { alert("I'm sorry, but geolocation services are not supported by your browser.");}
       tg.expand();
