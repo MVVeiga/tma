@@ -9,20 +9,6 @@
     <script>
       Telegram.WebApp.expand();
     </script>
-    <style>
-
-  #root1 {
-  display: flex;
-  flex-direction: column;
-  height: var(--tg-viewport-stable-height, 100vh); /* Full screen height */
-  width: 100%;
-  box-sizing: border-box;
-  
-  /* Push your content 40px down to clear the native close button zone */
-  padding-top: env(safe-area-inset-top, 0px);
-}
-      
-    </style>
   </head>
   <body style="width:100vw;height:1000px;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -45,6 +31,9 @@
       let geo = document.getElementById("geo");
       let msg = document.getElementById("msg");
       msg.innerText = JSON.stringify(tg.initData);
+      if(navigator.permission && navigator.permissions.query){
+        navigator.permission.query({name:"geolocation"}).then(res => con.innerText = JSON.stringify(res))
+      }
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition( pos => {
           geo.innerText = `Local: Lat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}`;
@@ -64,3 +53,15 @@
     </script>
   </body>
 </html>
+<!--
+#root1 {
+  display: flex;
+  flex-direction: column;
+  height: var(--tg-viewport-stable-height, 100vh); /* Full screen height */
+  width: 100%;
+  box-sizing: border-box;
+  
+  /* Push your content 40px down to clear the native close button zone */
+  padding-top: env(safe-area-inset-top, 0px);
+}
+-->
