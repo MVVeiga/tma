@@ -15,7 +15,7 @@
   
     <div id="root"></div>
 
-    <div>Status: fixed 5</div>
+    <div>TMA V 2.7</div>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
@@ -27,7 +27,7 @@
       let tg = Telegram.WebApp;
       console.log('SVXTMA connectedCallBack', tg);
       let con = document.getElementById("con");
-      con.innerText =   "V2.7 - isExpanded? " + tg.isExpanded;
+      con.innerText =   "isExpanded? " + tg.isExpanded;
       let geo = document.getElementById("geo");
       let msg = document.getElementById("msg");
       msg.innerText = JSON.stringify(tg.initData);
@@ -50,8 +50,11 @@
       tg.showAlert(Telegram.WebApp.isExpanded);
       tg.setHeaderColor('#FF8303');
       tg.BackButton.show();
-      tg.BackButton.onClick(() => {  // Your back navigation logic here
-      tg.BackButton.hide();
+      tg.BackButton.onClick(data => {  // Your back navigation logic here
+        console.log("BackButton cliked", data);
+        tg.BackButton.hide();
+      });  
+        
     </script>
   </body>
 </html>
