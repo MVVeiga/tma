@@ -27,11 +27,12 @@
       let tg = Telegram.WebApp;
       console.log('SVXTMA connectedCallBack', tg);
       let con = document.getElementById("con");
-      con.innerText =   "V2.5 - isExpanded? " + tg.isExpanded;
+      con.innerText =   "V2.6 - isExpanded? " + tg.isExpanded;
       let geo = document.getElementById("geo");
       let msg = document.getElementById("msg");
       msg.innerText = JSON.stringify(tg.initData);
       tg.LocationManager.init();
+      console.log("tg", tg);
       let geoloc = tg.LocationManager.getLocation();
       console.log("tg locamanaget getloc", geoloc);
       con.innerText = JSON.stringify(geoloc);
