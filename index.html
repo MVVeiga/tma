@@ -6,8 +6,8 @@
     <title>Telegram Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-      window.Telegram.WebApp.showAlert('V2.2 - Header Script isExpanded? ' + Telegram.WebApp.isExpanded);
-      window.Telegram.WebApp.expand();
+      tg.showAlert('V2.3 - Header Script isExpanded? ' + Telegram.WebApp.isExpanded);
+      tg.expand();
     </script>
     <style>
 
@@ -34,28 +34,32 @@
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
     <iframe width="560" height="315" src="https://www.youtube.com/embed/ELjzrNXhAlk?&autoplay=1"frameborder="0" allowfullscreen></iframe>
-    <div id="console" type="text" style="width:100%;padding:0;margin:0;background:white">Console</div>
+    <div  type="text" style="width:100%;padding:0;margin:0;background:white">Console<br><span id="con"></span></div>
+    <div  type="text" style="width:100%;padding:0;margin:0;background:white">Geolocation<br><span id="geo"></span></div>
+    <div type="text" style="width:100%;padding:0;margin:0;background:white">Message<br><span id="msg"></span></div>
     <script>
-      console.log('SVXPlayer connectedCallBack');
-      let msg = document.getElementById("fixed");
+      let tg = window.Telegram.WebApp;
+      console.log('SVXPlayer connectedCallBack', windows);
+      let con = document.getElementById("console");
+      let geo = document.getElementById("console");
       let msg = document.getElementById("console");
+      msg.innerText = JSON.stringify(tg.initData);
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition( pos => {
-          msg.innerHTML = `Local: Lat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}`;
-          console.innerHTML = JSON.stringify(Telegram.WebApp);
-          window.Telegram.WebApp.ready();
-          window.Telegram.WebApp.expand();
-          window.Telegram.WebApp.showAlert(Telegram.WebApp.isExpanded);
-        }, err => { console.log("Error:", err) });
+          geo.innerText = `Local: Lat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}`;
+          tg.ready();
+          tg.expand();
+          tg.showAlert(Telegram.WebApp.isExpanded);
+          }, err => { console.log("Error:", err) });
       } else { alert("I'm sorry, but geolocation services are not supported by your browser.");}
-      window.Telegram.WebApp.expand();
-      window.Telegram.WebApp.ready();
-      window.Telegram.WebApp.expand();
-      window.Telegram.WebApp.showAlert(Telegram.WebApp.isExpanded);
-      window.Telegram.WebApp.setHeaderColor('#FF8303');
-      window.Telegram.WebApp.BackButton.show();
-      window.Telegram.WebApp.BackButton.onClick(() => {  // Your back navigation logic here
-        window.Telegram.WebApp.BackButton.hide();
+      tg.expand();
+      tg.ready();
+      tg.expand();
+      tg.showAlert(Telegram.WebApp.isExpanded);
+      tg.setHeaderColor('#FF8303');
+      tg.BackButton.show();
+      tg.BackButton.onClick(() => {  // Your back navigation logic here
+      tg.BackButton.hide();
       });
     </script>
   </body>
