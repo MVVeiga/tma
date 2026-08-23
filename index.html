@@ -27,24 +27,23 @@
       let tg = Telegram.WebApp;
       console.log('SVXTMA connectedCallBack', tg);
       let con = document.getElementById("con");
-      con.innerText =   "V2.6 - isExpanded? " + tg.isExpanded;
+      con.innerText =   "V2.7 - isExpanded? " + tg.isExpanded;
       let geo = document.getElementById("geo");
       let msg = document.getElementById("msg");
       msg.innerText = JSON.stringify(tg.initData);
-      tg.LocationManager.init();
-      console.log("tg", tg);
-      let geoloc = tg.LocationManager.getLocation();
-      console.log("tg locamanaget getloc", geoloc);
-      con.innerText = JSON.stringify(geoloc);
-      
 
-      if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition( pos => {
-          geo.innerText = `Local: Lat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}`;
-          tg.ready();
-          tg.expand();
-          }, err => { console.log("Error:", err) });
-      } else { alert("I'm sorry, but geolocation services are not supported by your browser.");}
+      tg.LocationManager.init(() =>  {
+        if (tg.LocationManager.isInited && tg.LocationManager.isLocationAvailable) {
+          console.log("Location tracking initialized successfully!");
+          tg.LocationManager.getLocation(data =>  {
+            if (data) {
+              geo.innerText = `Local: Lat= ${data.latitude} , Lon = ${data.longitude}`;
+              console.log("Geo Data", data);
+            }
+          });
+        } else { console.log("Location services are unavailable or permission was denied.")}
+      });
+    
       tg.expand();
       tg.ready();
       tg.expand();
@@ -53,7 +52,6 @@
       tg.BackButton.show();
       tg.BackButton.onClick(() => {  // Your back navigation logic here
       tg.BackButton.hide();
-      });
     </script>
   </body>
 </html>
@@ -68,4 +66,12 @@
   /* Push your content 40px down to clear the native close button zone */
   padding-top: env(safe-area-inset-top, 0px);
 }
+
+  if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition( pos => {
+          geo.innerText = `Local: Lat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}`;
+          tg.ready();
+          tg.expand();
+          }, err => { console.log("Error:", err) });
+      } else { alert("I'm sorry, but geolocation services are not supported by your browser.");}
 -->
