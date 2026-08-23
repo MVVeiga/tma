@@ -31,9 +31,12 @@
       let geo = document.getElementById("geo");
       let msg = document.getElementById("msg");
       msg.innerText = JSON.stringify(tg.initData);
-      if(navigator.permissions && navigator.permissions.query){
-        navigator.permissions.query({name:"geolocation"}).then(res => con.innerText = JSON.stringify(res))
-      }
+      tg.LocationManager.init();
+      let geoloc = tg.LocationManager.getLocation();
+      console.log("tg locamanaget getloc", geoloc);
+      con.innerText = JSON.stringify(geoloc);
+      
+
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition( pos => {
           geo.innerText = `Local: Lat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}`;
