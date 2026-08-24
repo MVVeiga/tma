@@ -44,9 +44,9 @@
         if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
           console.log("Location tracking initialized successfully!");
           tg.onEvent('locationManagerUpdated', () => {
-            getLocation(); 
+            console.log("Location availability or state changed. Granted:", locationManager.isAccessGranted);
+            if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) getLocation(); 
             console.log("Location availability or state changed.");
-            console.log("Granted:", locationManager.isAccessGranted);
           });
          getLocation(); 
          
