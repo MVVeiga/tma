@@ -61,7 +61,7 @@
       tg.LocationManager.init(() =>  {
         console.log("Location tracking initialized successfully!", tg.LocationManager);
         if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
-          getLocation();
+          setInterval(getLocation, 1000); 
         } else { console.log("Location services are unavailable or permission was denied.")}
       });
       
