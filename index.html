@@ -35,12 +35,13 @@
       const but = document.getElementById("but");
       but.addEventListener("click", e => getLocation())
       but.focus();
-      console.log("but", but)
+      console.log("but", but);
 
       window.addEventListener('focus', () => { tg.showAlert("focused")});
       document.addEventListener("visibilitychange", function() {
-      if (document.visibilityState === "hidden") {  tg.showAlert("hide")} 
-      else {  tg.showAlert("show")}
+        if (document.visibilityState === "hidden") {  tg.showAlert("hide")} 
+        else {  tg.showAlert("show")}
+      });  
     
       
       function getLocation() {
