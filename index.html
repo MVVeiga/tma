@@ -45,16 +45,16 @@
           console.log("Location tracking initialized successfully!");
           getLocation();
         } else { console.log("Location services are unavailable or permission was denied.")}
-        tg.onEvent('locationManagerUpdated', () => {
-          console.log("Location availability or state changed. Granted:", locationManager.isAccessGranted);
-          if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) getLocation(); 
-        });
+      });
+      tg.onEvent('locationManagerUpdated', () => {
+        console.log("Location availability or state changed. Granted:", locationManager.isAccessGranted);
+        if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) getLocation(); 
       });
     
       tg.expand();
       tg.ready();
       tg.expand();
-      tg.showAlert(Telegram.WebApp.isExpanded);
+      //tg.showAlert(Telegram.WebApp.isExpanded);
       tg.setHeaderColor('#FF8303');
       tg.BackButton.show();
       tg.BackButton.onClick(data => {  // Your back navigation logic here
