@@ -15,7 +15,7 @@
   
     <div id="root"></div>
 
-    <div>TMA V 2.7</div>
+    <div>TMA V 2.8</div>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
@@ -32,16 +32,27 @@
       let msg = document.getElementById("msg");
       msg.innerText = JSON.stringify(tg.initData);
 
+      function getLocation() {
+        tg.LocationManager.getLocation(data =>  {
+          if (data) {
+            geo.innerText = `Local: Lat= ${data.latitude} , Lon = ${data.longitude}`;
+            console.log("Geo Data", data);
+          }
+        });
+      }  
       tg.LocationManager.init(() =>  {
-        if (tg.LocationManager.isInited && tg.LocationManager.isLocationAvailable) {
+        if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
           console.log("Location tracking initialized successfully!");
-          tg.LocationManager.getLocation(data =>  {
-            if (data) {
-              geo.innerText = `Local: Lat= ${data.latitude} , Lon = ${data.longitude}`;
-              console.log("Geo Data", data);
-            }
+          tg.onEvent('locationManagerUpdated', () => {
+            getLocation(); 
+            console.log("Location availability or state changed.");
+            console.log("Granted:", locationManager.isAccessGranted);
           });
+         getLocation(); 
+         
         } else { console.log("Location services are unavailable or permission was denied.")}
+
+
       });
     
       tg.expand();
