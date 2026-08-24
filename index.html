@@ -39,7 +39,11 @@
         tg.LocationManager.getLocation(data =>  {
           if (data) {
             geo.innerText = `Local: Lat= ${data.latitude} , Lon = ${data.longitude}`;
-            if ("latitude" in data) but.style.display="none" else but.addEventListener("click", e => getLocation());
+            if ("latitude" in data) {
+              but.style.display="none" 
+            }else {
+              but.addEventListener("click", e => getLocation())
+            }
               
             console.log("Geo Data", data);
           }
