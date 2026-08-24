@@ -15,7 +15,7 @@
   
     <div id="root"></div>
 
-    <div>TMA V 2.13</div>
+    <div>TMA V 2.14</div>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
@@ -39,7 +39,7 @@
         tg.LocationManager.getLocation(data =>  {
           if (data) {
             geo.innerText = `Local: Lat= ${data.latitude} , Lon = ${data.longitude}`;
-            if ("latitude" in data) but.style.display="none") else but.addEventListener("click", e => getLocation());
+            if ("latitude" in data) but.style.display="none" else but.addEventListener("click", e => getLocation());
               
             console.log("Geo Data", data);
           }
