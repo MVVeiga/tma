@@ -48,7 +48,7 @@
       });
       tg.onEvent('locationManagerUpdated', () => {
         console.log("Location availability or state changed. Granted:", tg.LocationManager.isAccessGranted);
-        msg.innerText = "Location updated " + tg.LocationManager.isLocationAvailable + " " +  tg.LocationManager.isInited " - " +  Date.now();
+        msg.innerText = "Location updated " + tg.LocationManager.isLocationAvailable + " " +  tg.LocationManager.isInited +  " - " +  Date.now();
         if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) getLocation(); 
       });
     
