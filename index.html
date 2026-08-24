@@ -37,10 +37,10 @@
       but.focus();
       console.log("but", but);
 
-      window.addEventListener('focus', () => { console.log("focused")});
-      document.addEventListener("visibilitychange", function() {
-        if (document.visibilityState === "hidden") {  console.log("docu hidden ==============")} 
-        else {  cosole.log("docu show ==========")}
+      window.addEventListener('focus', (e => { console.log("focused", e)});
+      document.addEventListener("visibilitychange", function(e) {
+        if (document.visibilityState === "hidden") {  console.log("docu hidden ==============", e)} 
+        else {  console.log("docu show ==========", e)}
       });  
     
       
