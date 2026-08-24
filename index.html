@@ -37,7 +37,9 @@
       but.focus();
       console.log("but", but);
 
+      window.addEventListener('blur', e => { console.log("Blured", e)});
       window.addEventListener('focus', e => { console.log("focused", e)});
+      
       document.addEventListener("visibilitychange", e => {
         if (document.visibilityState === "hidden") {  console.log("docu hidden ==============", e)} 
         else {  console.log("docu show ==========", e)}
