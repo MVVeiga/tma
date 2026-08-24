@@ -49,12 +49,12 @@
           }
         });
       }
-      getLocation();
+
       tg.LocationManager.init(() =>  {
         console.log("Location tracking initialized successfully!", tg.LocationManager);
-        //if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
-        //  getLocation();
-        //} else { console.log("Location services are unavailable or permission was denied.")}
+        if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
+          getLocation();
+        } else { console.log("Location services are unavailable or permission was denied.")}
       });
       
       tg.onEvent('locationManagerUpdated', () => {
