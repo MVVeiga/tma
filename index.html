@@ -37,10 +37,10 @@
       but.focus();
       console.log("but", but);
 
-      window.addEventListener('focus', () => { tg.showAlert("focused")});
+      window.addEventListener('focus', () => { console.log("focused")});
       document.addEventListener("visibilitychange", function() {
-        if (document.visibilityState === "hidden") {  tg.showAlert("hide")} 
-        else {  tg.showAlert("show")}
+        if (document.visibilityState === "hidden") {  console.log("docu hidden ==============")} 
+        else {  cosole.log("docu show ==========")}
       });  
     
       
