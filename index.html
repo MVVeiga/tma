@@ -47,7 +47,7 @@
         } else { console.log("Location services are unavailable or permission was denied.")}
       });
       tg.onEvent('locationManagerUpdated', () => {
-        console.log("Location availability or state changed. Granted:", locationManager.isAccessGranted);
+        console.log("Location availability or state changed. Granted:", tg.LocationManager.isAccessGranted);
         if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) getLocation(); 
       });
     
