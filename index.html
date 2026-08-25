@@ -49,9 +49,10 @@
       // Tg Events
       tg.onEvent("popupClosed", e => {console.log("popclosed", e)});
     
-        
+      let geoTimer;  
       function getLocation() {
         tg.LocationManager.getLocation(data =>  {
+          console.log("geo data", data);
           if (data) {
             geo.innerText = `Local: Lat= ${data.latitude} , Lon = ${data.longitude}`;
             if ("latitude" in data)  but.style.display="none" 
