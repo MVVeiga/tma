@@ -15,7 +15,7 @@
   
     <button id="but" style="width:60px;height:40px">No Radar</button>
  
-    <div>TMA V 2.24</div>
+    <div>TMA V 2.25</div>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
@@ -64,6 +64,7 @@
         });
         console.log("locMan", locMan);
       }
+      /*
       tg.LocationManager.init(() =>  {
           if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
             locMan = {ts: Date.now(), timer: null};
@@ -71,7 +72,7 @@
             getLocation();
           }
       });
-
+*/
       watchId = navigator.geolocation.watchPosition(pos => {  
         console.log('Web Geolocation watch pos:', pos);
         geo.innerText = geo.innerText + `\n WLat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}, ${Date.now()}`;
