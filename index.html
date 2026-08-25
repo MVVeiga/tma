@@ -50,14 +50,7 @@
 
       //tg.WebView.postEvent("location_requested", );
       //tg.WebView.receiveEvent("")
-      tg.LocationManager.init(() =>  {
-          if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
-            locMan = {ts: Date.now(), timer: null};
-            console.log("call getloc 1st");
-          }
-      });
-      
-      (function getLocation() {
+      function getLocation() {
         tg.LocationManager.getLocation(data =>  {
           console.log("geo data in", data);
           if (data === null) { locMan.timer = null; console.log("no geo data");
@@ -69,7 +62,14 @@
           }
         });
         console.log("locMan", locMan);
-      })();
+      }
+      tg.LocationManager.init(() =>  {
+          if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
+            locMan = {ts: Date.now(), timer: null};
+            console.log("call getloc 1st");
+          }
+      });
+      
             
       
 
