@@ -15,7 +15,7 @@
   
     <button id="but" style="width:60px;height:40px">No Radar</button>
  
-    <div>TMA V 2.22</div>
+    <div>TMA V 2.23</div>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
@@ -51,7 +51,7 @@
       //tg.WebView.postEvent("location_requested", );
       //tg.WebView.receiveEvent("")
       function getLocation() {
-        tg.LocationManager.getLocation(data =>  {
+        tg.LocationManager.getLocation(async data =>  {
           console.log("geo data in", data);
           if (data === null) { clearInterval(locMan.timer); locMan.timer = null; console.log("no geo data");
           } else {
