@@ -56,9 +56,10 @@
           if (data === null) { locMan.timer = null; console.log("no geo data");
           } else {
             console.log("geo data", data);
-            locMan = { ...locMan, ...data };
+            locMan = { ...data, ...locMan };
             geo.innerText = geo.innerText + `\nLocal: Lat= ${data.latitude} , Lon = ${data.longitude}`;
-           // if (!locMan.timer) locMan.timer = setInterval(getLocation, 5000);
+            
+            if (locMan.timer === null ) locMan.timer = setInterval(getLocation, 10000);
           }
         });
         console.log("locMan", locMan);
