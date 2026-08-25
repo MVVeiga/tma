@@ -15,7 +15,7 @@
   
     <button id="but" style="width:60px;height:40px">No Radar</button>
 
-    <div>TMA V 2.18</div>
+    <div>TMA V 2.19</div>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
@@ -36,18 +36,19 @@
       but.addEventListener("click", e => getLocation())
       but.focus();
       console.log("but", but);
-
+      // Window Events
       window.addEventListener('blur', e => { console.log("Blured", e)});
       window.addEventListener('focus', e => { console.log("focused", e)});
-      
+      window.addEventListener('message', e => { console.log("window message", e)}
+      //Documnets Events
       document.addEventListener("visibilitychange", e => {
         if (document.visibilityState === "hidden") {  console.log("docu hidden ==============", e)} 
         else {  console.log("docu show ==========", e)}
       });  
 
+      // Tg Events
       tg.onEvent("popupClosed", e => {console.log("popclosed", e)});
-       
-      window.addEventListener('message', e => { console.log("window message", e)}
+    
         
       function getLocation() {
         tg.LocationManager.getLocation(data =>  {
@@ -60,11 +61,13 @@
         });
       }
       //setInterval(getLocation, 1000); 
-      tg.LocationManager.init(() =>  {
+      function locInit() {
+        tg.LocationManager.init(() =>  {
         console.log("Location tracking initialized successfully!", tg.LocationManager);
         if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
         } else { console.log("Location services are unavailable or permission was denied.")}
       });
+      }  
       
       tg.onEvent('locationManagerUpdated', () => {
         console.log("Location availability or state changed. Granted:", tg.LocationManager.isAccessGranted);
