@@ -46,26 +46,27 @@
       tg.onEvent("popupClosed", e => {console.log("popclosed", e)});
 
       //Main
-      let location = null;
+      let locMan = null;
 
       function getLocation() {
         tg.LocationManager.getLocation(data =>  {
           console.log("geo data", data);
           if (data) {
             console.log("geo data", data);
-            location = { ...location, ...data };
+            locMan = { ...locMan, ...data };
             geo.innerText = geo.innerText + `\nLocal: Lat= ${data.latitude} , Lon = ${data.longitude}`;
-            if (!location.timer) location.timer = setInterval(getLocation, 5000);
+            if (!locMan.timer) locMan.timer = setInterval(getLocation, 5000);
           } else {
             console.log("no geo data");
-            location.timer = null;
+            locMan.timer = null;
           }
         });
+        console.log("locMan", locMan);
       }
             
       tg.LocationManager.init(() =>  {
           if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
-            location = {ts: Date.now(), timer: null};
+            locMan = {ts: Date.now(), timer: null};
             getLocation();
           }
       });
