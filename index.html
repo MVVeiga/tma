@@ -35,60 +35,60 @@
       const but = document.getElementById("but");
       but.addEventListener("click", e => getLocation())
       but.focus();
-      console.log("but", but);
+
       // Window Events
       window.addEventListener('blur', e => { console.log("Blured", e)});
       window.addEventListener('focus', e => { console.log("focused", e)});
       window.addEventListener('message', e => { console.log("window message", e)});
-      //Documnets Events
-      document.addEventListener("visibilitychange", e => {
-        if (document.visibilityState === "hidden") {  console.log("docu hidden ==============", e)} 
-        else {  console.log("docu show ==========", e)}
-      });  
+ 
 
       // Tg Events
       tg.onEvent("popupClosed", e => {console.log("popclosed", e)});
-    
-      let geoTimer;  
+
+      //Main
+      let location = null;
+
       function getLocation() {
         tg.LocationManager.getLocation(data =>  {
           console.log("geo data", data);
           if (data) {
-            geo.innerText = `Local: Lat= ${data.latitude} , Lon = ${data.longitude}`;
-            if ("latitude" in data)  but.style.display="none" 
-              
-            console.log("Geo Data", data);
+            console.log("geo data", data);
+            location = { ...location, ...data };
+            geo.innerText = geo.innerText + `\nLocal: Lat= ${data.latitude} , Lon = ${data.longitude}`;
+            if (!location.timer) location.timer = setInterval(getLocation, 5000);
+          } else {
+            console.log("no geo data");
+            location.timer = null;
           }
         });
       }
-      //setInterval(getLocation, 1000); 
-      function locInit() {
-        tg.LocationManager.init(() =>  {
-          console.log("Location tracking initialized successfully!", tg.LocationManager);
+            
+      tg.LocationManager.init(() =>  {
           if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
-          } else { console.log("Location services are unavailable or permission was denied.")}
-        });
-      }  
+            location = {ts: Date.now(), timer: null};
+            getLocation();
+          }
+      });
       
       tg.onEvent('locationManagerUpdated', () => {
         console.log("Location availability or state changed. Granted:", tg.LocationManager.isAccessGranted);
-        return;
-        msg.innerText = "Location updated " + tg.LocationManager.isLocationAvailable + " " +  tg.LocationManager.isInited +  " - " +  Date.now();
         if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) getLocation(); 
       });
-      tg.onEvent
-    
+
+     
+     //Documnets Events
+      document.addEventListener("visibilitychange", e => {
+        if (document.visibilityState === "hidden") {  console.log("docu hidden ==============", e); location.timer = null} 
+        else {  console.log("docu show ==========", e);}
+      });  
+      
+      
       tg.expand();
-      tg.ready();
-      tg.expand();
-      //tg.showAlert(Telegram.WebApp.isExpanded);
+      tg.showAlert("Tg popup");
       tg.setHeaderColor('#FF8303');
       tg.BackButton.show();
-      tg.BackButton.onClick(data => {  // Your back navigation logic here
-        console.log("BackButton cliked", data);
-        tg.BackButton.hide();
-      });  
-        
+      tg.BackButton.onClick(data => {  console.log("BackButton cliked", data); tg.BackButton.hide(); });  
+      tg.ready();  
     </script>
   </body>
 </html>
