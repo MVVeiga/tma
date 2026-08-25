@@ -15,7 +15,7 @@
   
     <button id="but" style="width:60px;height:40px">No Radar</button>
  
-    <div>TMA V 2.23</div>
+    <div>TMA V 2.24</div>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
      
@@ -73,15 +73,13 @@
       });
 
       watchId = navigator.geolocation.watchPosition(pos => {  
-        console.log('Web Geolocation watch pos:', pos)
+        console.log('Web Geolocation watch pos:', pos);
         geo.innerText = geo.innerText + `\n WLat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}, ${Date.now()}`;
-            }, err => console.log('Web Geolocation watch error:', err),
-            {enableHighAccuracy: true, timeout: 10000,  maximumAge: 0 }
-          );
-      });      
-      
-
-     
+        }, 
+        err => console.log('Web Geolocation watch error:', err),
+        {enableHighAccuracy: true, timeout: 10000,  maximumAge: 0 }
+      );
+    
      //Documnets Events
       document.addEventListener("visibilitychange", e => {
         if (document.visibilityState === "hidden") {  console.log("docu hidden ==============", e); location.timer = null} 
