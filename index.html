@@ -53,11 +53,11 @@
       function getLocation() {
         tg.LocationManager.getLocation(data =>  {
           console.log("geo data in", data);
-          if (data === null) { locMan.timer = null; console.log("no geo data");
+          if (data === null) { clearInterval(locMan.timer); locMan.timer = null; console.log("no geo data");
           } else {
             console.log("geo data", data);
             locMan = { ...data, ...locMan };
-            geo.innerText = geo.innerText + `\nLocal: Lat= ${data.latitude} , Lon = ${data.longitude}`;
+            geo.innerText = geo.innerText + `\nLocal: Lat= ${data.latitude} , Lon = ${data.longitude}, ${Date.now()}`;
             
             if (locMan.timer === null ) locMan.timer = setInterval(getLocation, 10000);
           }
