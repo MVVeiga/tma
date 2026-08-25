@@ -67,6 +67,7 @@
           if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
             locMan = {ts: Date.now(), timer: null};
             console.log("call getloc 1st");
+            getLocation();
           }
       });
       
