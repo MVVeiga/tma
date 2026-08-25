@@ -56,7 +56,7 @@
             console.log("geo data", data);
             locMan = { ...locMan, ...data };
             geo.innerText = geo.innerText + `\nLocal: Lat= ${data.latitude} , Lon = ${data.longitude}`;
-            if (!locMan.timer) locMan.timer = setInterval(getLocation, 5000);
+           // if (!locMan.timer) locMan.timer = setInterval(getLocation, 5000);
           }
         });
         console.log("locMan", locMan);
