@@ -46,7 +46,9 @@
       });  
 
       tg.onEvent("popupClosed", e => {console.log("popclosed", e)});
-      
+       
+      window.addEventListener('message', e => { console.log("window message", e)}
+        
       function getLocation() {
         tg.LocationManager.getLocation(data =>  {
           if (data) {
