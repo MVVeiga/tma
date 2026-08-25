@@ -50,7 +50,7 @@
 
       function getLocation() {
         tg.LocationManager.getLocation(data =>  {
-          console.log("geo data", data);
+          console.log("geo data in", data);
           if (data) {
             console.log("geo data", data);
             locMan = { ...locMan, ...data };
@@ -67,6 +67,7 @@
       tg.LocationManager.init(() =>  {
           if (tg.LocationManager.isLocationAvailable && tg.LocationManager.isInited) {
             locMan = {ts: Date.now(), timer: null};
+            console.log("call getloc 1st");
             getLocation();
           }
       });
