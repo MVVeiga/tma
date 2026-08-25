@@ -74,11 +74,11 @@
       });
 */
       watchId = navigator.geolocation.watchPosition(pos => {  
-        console.log('Web Geolocation watch pos:', pos);
+        console.log('Web Geolocation watch pos:', pos);e
         geo.innerText = geo.innerText + `\n WLat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}, ${Date.now()}`;
         }, 
         err => console.log('Web Geolocation watch error:', err),
-        {enableHighAccuracy: true, timeout: 10000,  maximumAge: 0 }
+        {enableHighAccuracy: false, timeout: 10000,  maximumAge: 0 }
       );
     
      //Documnets Events
