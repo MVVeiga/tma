@@ -34,9 +34,9 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">Slide 1</div>
         <div class="swiper-slide">
-           <div  type="text" style="width:100%;padding:0;margin:0;background:white"><a href="https://t.me/MV_99_bot/myapp">Console</a><br><span id="con"></span></div>
-           <div  type="text" style="width:100%;padding:0;margin:0;background:white">Geolocation<br><span id="geo"></span></div>
-           <div type="text" style="width:100%;padding:0;margin:0;background:white">Message<br><span id="msg"></span></div>
+           <div  type="text" style="width:100%;padding:0;margin:0;background:green"><a href="https://t.me/MV_99_bot/myapp">Console</a><br><span id="con"></span></div>
+           <div  type="text" style="width:100%;padding:0;margin:0;background:red">Geolocation<br><span id="geo"></span></div>
+           <div type="text" style="width:100%;padding:0;margin:0;background:blue">Message<br><span id="msg"></span></div>
       
         </div>
         <div class="swiper-slide">Slide 3</div>
@@ -119,7 +119,7 @@
       
       
       tg.expand();
-      tg.showAlert("Tg popup");
+      //tg.showAlert("Tg popup");
       tg.setHeaderColor('#FF8303');
       tg.BackButton.show();
       tg.BackButton.onClick(data => {  console.log("BackButton cliked", data); tg.BackButton.hide(); });  
