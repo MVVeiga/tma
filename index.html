@@ -105,15 +105,16 @@
       });
 */
       const watchPos = pos =>  {  geo.innerText = geo.innerText + `\n WLat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}, ${Date.now()}` }
-      const watchPosErr = err => {  console.log('Web Geolocation watch error:', err) }
-      
-      let watchId = navigator.geolocation.watchPosition(watchPos,  watchPosErr,  {enableHighAccuracy: false, timeout: 10000,  maximumAge: 0 } );
-    
+      const watchPosErr = err => {  console.log('Web Geolocation watch error:', err, Date.now()) }
+      console.log("init", Date.now())
+      let watchId = navigator.geolocation.watchPosition(watchPos,  watchPosErr,  {enableHighAccuracy: false, timeout: 30000,  maximumAge: 0 } );
+      console.log("after", Date.now())
      //Documnets Events
       document.addEventListener("visibilitychange", e => {
         if (document.visibilityState === "hidden") {
           navigator.geolocation.clearWatch(watchId);
-          console.log("docu hidden ==============", e, whathId);
+          console.log("docu hidden ==============", e, whatchId);
+          watchId = null;
           location.timer = null} 
         else { 
           let watchId = navigator.geolocation.watchPosition(watchPos,  watchPosErr,  {enableHighAccuracy: false, timeout: 10000,  maximumAge: 0 } );
