@@ -16,8 +16,8 @@
       body { background: #000;  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 14px;color: #fff;margin: 0;padding: 0;}
       .swiper { width: 100%; height: auto; }
       .swiper-slide {text-align: center; font-size: 18px; background: #444;}
-      .swiper .swiper-slide { height: 300px; line-height: 300px; }
-      .swiper .swiper-slide:nth-child(2n) { height: 500px; line-height: 500px; }
+      .swiper .swiper-slide { height: 200px; ; }
+      .swiper .swiper-slide:nth-child(2n) { height: auto; ; }
     </style>
   </head>
 
@@ -34,9 +34,10 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">Slide 1</div>
         <div class="swiper-slide">
-           <div  type="text" style="width:100%;padding:0;margin:0;background:green"><a href="https://t.me/MV_99_bot/myapp">Console</a><br><span id="con"></span></div>
-           <div  type="text" style="width:100%;padding:0;margin:0;background:red">Geolocation<br><span id="geo"></span></div>
-           <div type="text" style="width:100%;padding:0;margin:0;background:blue">Message<br><span id="msg"></span></div>
+           <a href="https://t.me/MV_99_bot/myapp">Console</a>
+           <div id="con" style="height:auto;background:green">Con</div>
+           <div id="geo" style="height:auto;background:grey">Geo</div>
+           <div id="msg" style="height:auto;background:blue">Msg</div>
       
         </div>
         <div class="swiper-slide">Slide 3</div>
