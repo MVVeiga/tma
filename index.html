@@ -104,18 +104,21 @@
           }
       });
 */
-      watchId = navigator.geolocation.watchPosition(pos => {  
-        console.log('Web Geolocation watch pos:', pos);
-        geo.innerText = geo.innerText + `\n WLat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}, ${Date.now()}`;
-        }, 
-        err => console.log('Web Geolocation watch error:', err),
-        {enableHighAccuracy: false, timeout: 10000,  maximumAge: 0 }
-      );
+      const watchPos = pos =>  {  geo.innerText = geo.innerText + `\n WLat= ${pos.coords.latitude} , Lon = ${pos.coords.longitude}, ${Date.now()}` }
+      const watchPosErr = err => {  console.log('Web Geolocation watch error:', err) }
+      
+      let watchId = navigator.geolocation.watchPosition(watchPos,  watchPosErr,  {enableHighAccuracy: false, timeout: 10000,  maximumAge: 0 } );
     
      //Documnets Events
       document.addEventListener("visibilitychange", e => {
-        if (document.visibilityState === "hidden") {  console.log("docu hidden ==============", e); location.timer = null} 
-        else {  console.log("docu show ==========", e);}
+        if (document.visibilityState === "hidden") {
+          navigator.geolocation.clearWatch(watchId);
+          console.log("docu hidden ==============", e, whathId);
+          location.timer = null} 
+        else { 
+          let watchId = navigator.geolocation.watchPosition(watchPos,  watchPosErr,  {enableHighAccuracy: false, timeout: 10000,  maximumAge: 0 } );
+          console.log("docu show ==========", e);
+        }
       });  
       
       
