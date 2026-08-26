@@ -6,10 +6,21 @@
     <meta name="theme-color" content="#000000"/>
     <title>Telegram Mini App</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-      Telegram.WebApp.expand();
-    </script>
+    <script> Telegram.WebApp.expand();</script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.css"/>
+
+    <style>
+      html,
+      body { position: relative; height: 100%;}
+      body { background: #000;  font-family: Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 14px;color: #fff;margin: 0;padding: 0;}
+      .swiper { width: 100%; height: auto; }
+      .swiper-slide {text-align: center; font-size: 18px; background: #444;}
+      .swiper .swiper-slide { height: 300px; line-height: 300px; }
+      .swiper .swiper-slide:nth-child(2n) { height: 500px; line-height: 500px; }
+    </style>
   </head>
+
   <body style="width:100vw;height:1000px;">
     <noscript>You need to enable JavaScript to run this app.</noscript>
   
@@ -18,11 +29,30 @@
     <a href="https://checkinview.com"><div>TMA V 2.25</div></a>
     <div id="fixed" type="text" style="width:100%;padding:0;margin:0;bacckground:white"></div>
     <div id="movel" type="text" style="width:100%;padding:0;margin:0" onclick="window.location.href='https://checkinview.com'">CV Site</div>
-     
+   
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">
+           <div  type="text" style="width:100%;padding:0;margin:0;background:white"><a href="https://t.me/MV_99_bot/myapp">Console</a><br><span id="con"></span></div>
+           <div  type="text" style="width:100%;padding:0;margin:0;background:white">Geolocation<br><span id="geo"></span></div>
+           <div type="text" style="width:100%;padding:0;margin:0;background:white">Message<br><span id="msg"></span></div>
+      
+        </div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 4</div>
+        <div class="swiper-slide">Slide 5</div>
+        <div class="swiper-slide">Slide 6</div>
+        <div class="swiper-slide">Slide 7</div>
+        <div class="swiper-slide">Slide 8</div>
+        <div class="swiper-slide">Slide 9</div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div>
 
-    <div  type="text" style="width:100%;padding:0;margin:0;background:white"><a href="https://t.me/MV_99_bot/myapp">Console</a><br><span id="con"></span></div>
-    <div  type="text" style="width:100%;padding:0;margin:0;background:white">Geolocation<br><span id="geo"></span></div>
-    <div type="text" style="width:100%;padding:0;margin:0;background:white">Message<br><span id="msg"></span></div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js"></script>
     
     <script>
       let tg = Telegram.WebApp;
@@ -94,6 +124,24 @@
       tg.BackButton.show();
       tg.BackButton.onClick(data => {  console.log("BackButton cliked", data); tg.BackButton.hide(); });  
       tg.ready();  
+    
+      
+    
+      var swiper = new Swiper('.mySwiper', {
+        autoHeight: true,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+    
+    
+    
     </script>
   </body>
 </html>
